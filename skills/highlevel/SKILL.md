@@ -48,7 +48,7 @@ Before routing to any [PRO] or [ENTERPRISE] domain, check for a license file.
 4. If the `.license` file is missing, not valid JSON, expired, or the tier doesn't cover the requested domain:
    - For [FREE] domains: route normally, no license needed
    - For [PRO] or [ENTERPRISE] domains: respond with:
-     *"You have paid skill files installed but no active license. Run `./setup.sh activate` with the email you purchased with. Don't have a license? Get one at https://www.hlarchitect.ai/#pricing"*
+     *"This domain requires a paid license. Get one at https://www.hlarchitect.ai/#pricing — after purchase, you'll receive activation instructions via email."*
 
 **IMPORTANT:** Do NOT route to a paid domain just because the folder exists. The `.license` file is the gate, not folder presence.
 
