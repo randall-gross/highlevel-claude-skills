@@ -86,55 +86,56 @@ Claude reads upsert.md       -> has the method, path, params, JSON example
 
 ### Tier Comparison
 
+> **Tiers are additive.** Each tier is a separate purchase that plugs into the same skill folder. Pro does not include Free content. Enterprise does not include Free or Pro content. You need all three for complete 413-endpoint coverage.
+
 <table>
 <tr>
 <th width="33%">
 
-### Community
-**Free**
+### Free
+**$0**
 
 </th>
 <th width="33%">
 
-### Professional
-**$15/mo**
+### Pro
+**$49** one-time
 
 </th>
 <th width="33%">
 
 ### Enterprise
-**$40/mo**
+**$97** one-time
 
 </th>
 </tr>
 <tr>
 <td>
 
-**Core CRM — 105 endpoints**
-- Contacts (32)
-- Opportunities (10)
-- Calendars (34)
-- Conversations (19)
+**Core CRM — 22 endpoints**
+- Contacts core (9)
+- Opportunities core (6)
 - Workflows (1)
-- Custom Objects (9)
+- Auth + OAuth (5)
+- OAuth flow guide
+- Private token guide
 
 **Plus:**
 - Master SKILL.md router
-- Setup script
-- Basic README guides
+- Upgrade prompts for paid domains
 
 </td>
 <td>
 
-**Everything in Community, plus:**
+**Requires Free tier**
 
-**Extended Platform — 165 endpoints**
-- Locations (29)
-- Invoices & Estimates (41)
-- Payments (24)
-- Products (27)
+**Full CRM — 149 endpoints**
+- Contacts (tags, notes, tasks, followers, campaigns, workflows, bulk, DND)
+- Opportunities (pipelines, followers, upsert)
+- Calendars (34)
+- Conversations (19)
+- Custom Objects (9)
 - Users (7)
-- Auth & OAuth (5)
 - Associations (10)
 - Custom Fields V2 (8)
 - Businesses (5)
@@ -143,17 +144,16 @@ Claude reads upsert.md       -> has the method, path, params, JSON example
 - Links (6)
 - Webhooks (2)
 
-**Plus:**
-- Protective hooks (6 scripts)
-- Settings template
-- Plugin installation guide
-
 </td>
 <td>
 
-**Everything in Professional, plus:**
+**Requires Free + Pro tiers**
 
-**Specialized Domains — 143 endpoints**
+**Agency Operations — 242 endpoints**
+- Locations (29)
+- Invoices & Estimates (41)
+- Payments (24)
+- Products (27)
 - Social Planner (40)
 - Store & Shipping (18)
 - SaaS API (22)
@@ -167,16 +167,27 @@ Claude reads upsert.md       -> has the method, path, params, JSON example
 - Proposals (4)
 - Custom Menus (5)
 - Phone System (2)
-- Courses (1)
-- Campaigns (1)
-- Companies (1)
-- Email ISV (1)
+- Courses, Campaigns, Companies, Email ISV (4)
 
 **Plus:**
 - Marketplace App setup guide
-- Next.js integration patterns
-- Webhook handler templates
-- Priority updates for new API versions
+
+</td>
+</tr>
+<tr>
+<td>
+
+[**Get Started**](https://github.com/randall-gross/highlevel-claude-skills)
+
+</td>
+<td>
+
+[**Buy Pro — $49**](https://www.hlarchitect.ai/#pricing)
+
+</td>
+<td>
+
+[**Buy Enterprise — $97**](https://www.hlarchitect.ai/#pricing)
 
 </td>
 </tr>
@@ -186,27 +197,25 @@ Claude reads upsert.md       -> has the method, path, params, JSON example
 
 ### Domain Map
 
-#### Core CRM (Community Tier)
+#### Free Tier — Core CRM
 
 | Domain | Endpoints | What It Does |
 |--------|:---------:|-------------|
-| **Contacts** | 32 | CRUD, tags, notes, tasks, followers, campaigns, workflows, DND, bulk ops |
-| **Opportunities** | 10 | Pipeline deals, stages, status tracking, followers |
-| **Calendars** | 34 | Scheduling, appointments, free slots, groups, resources, notifications |
+| **Contacts** (core) | 9 | Get, list, create, update, upsert, delete, search |
+| **Opportunities** (core) | 6 | Get, create, update, delete, search, update status |
+| **Workflows** | 1 | List workflows |
+| **Auth** | 5 | OAuth token exchange, location tokens, + setup guides |
+
+#### Pro Tier ($49) — Full CRM + Infrastructure
+
+| Domain | Endpoints | What It Does |
+|--------|:---------:|-------------|
+| **Contacts** (full) | +23 | Tags, notes, tasks, followers, campaigns, workflows, bulk ops, DND |
+| **Opportunities** (full) | +3 | Pipelines, followers, upsert |
+| **Calendars** | 34 | Appointments, free slots, groups, resources, notifications |
 | **Conversations** | 19 | SMS, email, live chat, recordings, transcriptions |
-| **Workflows** | 1 | List workflows (add/remove contacts lives under Contacts) |
 | **Custom Objects** | 9 | Schema CRUD, record CRUD, search |
-
-#### Extended Platform (Professional Tier)
-
-| Domain | Endpoints | What It Does |
-|--------|:---------:|-------------|
-| **Locations** | 29 | Sub-account management, custom fields/values, tags, templates |
-| **Invoices** | 41 | Invoice/estimate CRUD, templates, recurring schedules, Text2Pay |
-| **Payments** | 24 | Orders, subscriptions, transactions, coupons, custom providers |
-| **Products** | 27 | Catalog management, prices, collections, reviews, inventory |
 | **Users** | 7 | User CRUD, search, email filtering |
-| **Auth** | 5 | OAuth token exchange + private token and OAuth flow guides |
 | **Associations** | 10 | Object-to-object linking and relation management |
 | **Custom Fields V2** | 8 | Cross-object custom fields and folders |
 | **Businesses** | 5 | Business entity CRUD |
@@ -215,19 +224,28 @@ Claude reads upsert.md       -> has the method, path, params, JSON example
 | **Links** | 6 | Trigger link CRUD and search |
 | **Webhooks** | 2 | Signature verification guide + event types reference |
 
-#### Specialized (Enterprise Tier)
+#### Enterprise Tier ($97) — Agency Operations + Specialized
 
-| Domain | Endpoints | Domain | Endpoints |
-|--------|:---------:|--------|:---------:|
-| Social Planner | 40 | Snapshots | 4 |
-| Store / Shipping | 18 | Marketplace | 7 |
-| SaaS | 22 | Proposals | 4 |
-| Voice AI | 11 | Custom Menus | 5 |
-| Blogs | 7 | Phone System | 2 |
-| Funnels | 7 | Courses | 1 |
-| Email Builder | 5 | Campaigns | 1 |
-| Media | 7 | Companies | 1 |
-| | | Email ISV | 1 |
+| Domain | Endpoints | What It Does |
+|--------|:---------:|-------------|
+| **Locations** | 29 | Sub-account management, custom fields/values, tags, templates |
+| **Invoices & Estimates** | 41 | CRUD, templates, recurring schedules, Text2Pay |
+| **Payments** | 24 | Orders, subscriptions, transactions, coupons, custom providers |
+| **Products** | 27 | Catalog, prices, collections, reviews, inventory |
+| **Social Planner** | 40 | Posts, accounts, CSV import, platform OAuth, statistics |
+| **Store / Shipping** | 18 | Carriers, zones, rates, store settings |
+| **SaaS API** | 22 | White-label SaaS plans, subscriptions, rebilling |
+| **Voice AI** | 11 | AI agents, actions, call logs |
+| **Blogs** | 7 | Sites, posts, authors, categories |
+| **Funnels** | 7 | Pages, redirects |
+| **Email Builder** | 5 | Templates, campaigns |
+| **Media** | 7 | Files, folders, uploads |
+| **Snapshots** | 4 | Management, sharing, push status |
+| **Marketplace** | 7 | Installations, wallet charges |
+| **Proposals** | 4 | Documents, contracts, templates |
+| **Custom Menus** | 5 | Custom UI links |
+| **Phone System** | 2 | Number pools, active numbers |
+| **+ 4 more** | 4 | Courses, Campaigns, Companies, Email ISV |
 
 ---
 

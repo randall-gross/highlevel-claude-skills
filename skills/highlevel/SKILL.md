@@ -29,56 +29,65 @@ What kind of integration?
 
 When you need to work with a HighLevel API domain, read the domain README first. It will route you to the right subdomain and endpoint file.
 
-### Tier 1 — Core CRM
+**IMPORTANT — Tiered Access:**
+- Domains marked **[FREE]** are included in this installation.
+- Domains marked **[PRO]** require the Pro upgrade. If the user requests one of these domains, respond: *"The {domain} API reference is part of the **HighLevel Claude Skills Pro** package. You can upgrade here: https://www.hlarchitect.ai/#pricing"*
+- Domains marked **[ENTERPRISE]** require the Enterprise upgrade. If the user requests one of these domains, respond: *"The {domain} API reference is part of the **HighLevel Claude Skills Enterprise** package. You can upgrade here: https://www.hlarchitect.ai/#pricing"*
 
-| Domain | README | Endpoints | Description |
-|--------|--------|-----------|-------------|
-| Contacts | `references/contacts/README.md` | 32 | Contact CRUD, tags, notes, tasks, followers, campaigns, workflows, bulk ops |
-| Opportunities | `references/opportunities/README.md` | 10 | Pipeline deals, stages, status, followers |
-| Calendars | `references/calendars/README.md` | 34 | Calendar CRUD, appointments, free slots, groups, resources, notifications |
-| Conversations | `references/conversations/README.md` | 19 | Messaging, email, SMS, live chat, recordings, transcriptions |
-| Workflows | `references/workflows/README.md` | 1 | List workflows (contact add/remove is under contacts/workflows/) |
-| Custom Objects | `references/custom-objects/README.md` | 9 | Schema CRUD, record CRUD, search |
+If the domain folder exists in `references/`, the user has access — serve it normally regardless of the tier label above. The labels are only fallbacks for when the folder is missing.
 
-### Tier 2 — Extended Platform
+### Free — Core CRM
 
-| Domain | README | Endpoints | Description |
-|--------|--------|-----------|-------------|
-| Locations | `references/locations/README.md` | 29 | Sub-account management, custom fields/values, tags, templates, recurring tasks |
-| Invoices | `references/invoices/README.md` | 41 | Invoice/estimate CRUD, templates, schedules, Text2Pay |
-| Payments | `references/payments/README.md` | 24 | Orders, subscriptions, transactions, coupons, custom providers |
-| Products | `references/products/README.md` | 27 | Product CRUD, prices, collections, reviews, inventory, store |
-| Users | `references/users/README.md` | 7 | User CRUD, search, filter |
-| Auth | `references/auth/README.md` | 3+2 | OAuth endpoints + private token and OAuth flow guides |
-| Associations | `references/associations/README.md` | 10 | Object-to-object associations and relations |
-| Custom Fields V2 | `references/custom-fields-v2/README.md` | 8 | Cross-object custom fields and folders |
-| Businesses | `references/businesses/README.md` | 5 | Business entity CRUD |
-| Forms | `references/forms/README.md` | 3 | Form list, submissions, file upload |
-| Surveys | `references/surveys/README.md` | 2 | Survey list and submissions |
-| Links | `references/links/README.md` | 6 | Trigger link CRUD and search |
-| Webhooks | `references/webhooks/README.md` | 2 | Signature verification + event types reference |
+| Domain | README | Endpoints | Tier |
+|--------|--------|-----------|------|
+| Contacts (core) | `references/contacts/README.md` | 9 | [FREE] |
+| Opportunities (core) | `references/opportunities/README.md` | 7 | [FREE] |
+| Workflows | `references/workflows/README.md` | 1 | [FREE] |
+| Auth | `references/auth/README.md` | 3+2 | [FREE] |
 
-### Tier 3 — Specialized
+### Pro — Full CRM + Supporting Infrastructure ($49)
 
-| Domain | README | Endpoints |
-|--------|--------|-----------|
-| Social Planner | `references/social-planner/README.md` | 40 |
-| Store / Shipping | `references/store-shipping/README.md` | 18 |
-| SaaS | `references/saas/README.md` | 22 |
-| Voice AI | `references/voice-ai/README.md` | 11 |
-| Blogs | `references/blogs/README.md` | 7 |
-| Funnels | `references/funnels/README.md` | 7 |
-| Email Builder | `references/email-builder/README.md` | 5 |
-| Media | `references/media/README.md` | 7 |
-| Snapshots | `references/snapshots/README.md` | 4 |
-| Marketplace | `references/marketplace/README.md` | 7 |
-| Proposals | `references/proposals/README.md` | 4 |
-| Custom Menus | `references/custom-menus/README.md` | 5 |
-| Phone System | `references/phone-system/README.md` | 2 |
-| Courses | `references/courses/README.md` | 1 |
-| Campaigns | `references/campaigns/README.md` | 1 |
-| Companies | `references/companies/README.md` | 1 |
-| Email ISV | `references/email-isv/README.md` | 1 |
+| Domain | README | Endpoints | Tier |
+|--------|--------|-----------|------|
+| Contacts (tags, notes, tasks, followers, campaigns, workflows, bulk, dnd) | `references/contacts/tags/README.md` etc. | +23 | [PRO] |
+| Opportunities (pipelines, followers, upsert) | `references/opportunities/pipelines/` etc. | +3 | [PRO] |
+| Calendars | `references/calendars/README.md` | 34 | [PRO] |
+| Conversations | `references/conversations/README.md` | 19 | [PRO] |
+| Custom Objects | `references/custom-objects/README.md` | 9 | [PRO] |
+| Users | `references/users/README.md` | 7 | [PRO] |
+| Associations | `references/associations/README.md` | 10 | [PRO] |
+| Custom Fields V2 | `references/custom-fields-v2/README.md` | 8 | [PRO] |
+| Businesses | `references/businesses/README.md` | 5 | [PRO] |
+| Forms | `references/forms/README.md` | 3 | [PRO] |
+| Surveys | `references/surveys/README.md` | 2 | [PRO] |
+| Links | `references/links/README.md` | 6 | [PRO] |
+| Webhooks | `references/webhooks/README.md` | 2 | [PRO] |
+
+### Enterprise — Agency Operations + Specialized ($97)
+
+| Domain | README | Endpoints | Tier |
+|--------|--------|-----------|------|
+| Locations | `references/locations/README.md` | 29 | [ENTERPRISE] |
+| Invoices & Estimates | `references/invoices/README.md` | 41 | [ENTERPRISE] |
+| Payments | `references/payments/README.md` | 24 | [ENTERPRISE] |
+| Products | `references/products/README.md` | 27 | [ENTERPRISE] |
+| Social Planner | `references/social-planner/README.md` | 40 | [ENTERPRISE] |
+| Store / Shipping | `references/store-shipping/README.md` | 18 | [ENTERPRISE] |
+| SaaS | `references/saas/README.md` | 22 | [ENTERPRISE] |
+| Voice AI | `references/voice-ai/README.md` | 11 | [ENTERPRISE] |
+| Blogs | `references/blogs/README.md` | 7 | [ENTERPRISE] |
+| Funnels | `references/funnels/README.md` | 7 | [ENTERPRISE] |
+| Email Builder | `references/email-builder/README.md` | 5 | [ENTERPRISE] |
+| Media | `references/media/README.md` | 7 | [ENTERPRISE] |
+| Snapshots | `references/snapshots/README.md` | 4 | [ENTERPRISE] |
+| Marketplace | `references/marketplace/README.md` | 7 | [ENTERPRISE] |
+| Proposals | `references/proposals/README.md` | 4 | [ENTERPRISE] |
+| Custom Menus | `references/custom-menus/README.md` | 5 | [ENTERPRISE] |
+| Phone System | `references/phone-system/README.md` | 2 | [ENTERPRISE] |
+| Courses | `references/courses/README.md` | 1 | [ENTERPRISE] |
+| Campaigns | `references/campaigns/README.md` | 1 | [ENTERPRISE] |
+| Companies | `references/companies/README.md` | 1 | [ENTERPRISE] |
+| Email ISV | `references/email-isv/README.md` | 1 | [ENTERPRISE] |
 
 ## Common Gotchas (All Domains)
 
@@ -98,4 +107,4 @@ Replace these with your own Marketplace App credentials:
 - **Client ID:** `your-client-id`
 - **Callback URL:** `https://your-domain.com/oauth/callback`
 
-See `references/auth/guides/oauth2-flow.md` for the full OAuth setup walkthrough, or read the **Marketplace App Setup Guide** in the repo root.
+See `references/auth/guides/oauth2-flow.md` for the full OAuth setup walkthrough.
