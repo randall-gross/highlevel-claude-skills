@@ -34,7 +34,23 @@ When you need to work with a HighLevel API domain, read the domain README first.
 - Domains marked **[PRO]** require the Pro upgrade. If the user requests one of these domains, respond: *"The {domain} API reference is part of the **HighLevel Claude Skills Pro** package. You can upgrade here: https://www.hlarchitect.ai/#pricing"*
 - Domains marked **[ENTERPRISE]** require the Enterprise upgrade. If the user requests one of these domains, respond: *"The {domain} API reference is part of the **HighLevel Claude Skills Enterprise** package. You can upgrade here: https://www.hlarchitect.ai/#pricing"*
 
-If the domain folder exists in `references/`, the user has access — serve it normally regardless of the tier label above. The labels are only fallbacks for when the folder is missing.
+## License Check
+
+Before routing to any [PRO] or [ENTERPRISE] domain, check for a license file.
+
+1. Read the file at `references/.license`
+2. If the file exists and contains valid JSON:
+   a. Read the `expiresAt` field. If today's date is past the `expiresAt` date, treat the license as expired — skip to step 4.
+   b. Read the `tier` field:
+      - If tier is `"pro"`: all [PRO] domains are unlocked
+      - If tier is `"enterprise"`: all [PRO] AND [ENTERPRISE] domains are unlocked
+3. If the license is valid and the tier covers the requested domain, route normally.
+4. If the `.license` file is missing, not valid JSON, expired, or the tier doesn't cover the requested domain:
+   - For [FREE] domains: route normally, no license needed
+   - For [PRO] or [ENTERPRISE] domains: respond with:
+     *"You have paid skill files installed but no active license. Run `./setup.sh activate` with the email you purchased with. Don't have a license? Get one at https://www.hlarchitect.ai/#pricing"*
+
+**IMPORTANT:** Do NOT route to a paid domain just because the folder exists. The `.license` file is the gate, not folder presence.
 
 ### Free — Core CRM
 
