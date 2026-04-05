@@ -31,8 +31,8 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -H 'Version: 2021-07-28' \
   -d '{
-    "firstName": "Randall",
-    "lastName": "Gross",
+    "firstName": "Jane",
+    "lastName": "Admin",
     "role": "admin",
     "permissions": {
       "contactsEnabled": true,
@@ -48,9 +48,9 @@ curl -X PUT \
 ```json
 {
   "id": "usr_abc123def456",
-  "firstName": "Randall",
-  "lastName": "Gross",
-  "email": "randall@rocketdigitalmarketing.io",
+  "firstName": "Jane",
+  "lastName": "Admin",
+  "email": "admin@your-domain.com",
   "role": "admin",
   "permissions": {
     "contactsEnabled": true,

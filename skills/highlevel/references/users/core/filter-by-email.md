@@ -24,8 +24,8 @@ curl -X POST \
   -d '{
     "locationId": "ve9EPM428h8vShlRW1KT",
     "emails": [
-      "randall@rocketdigitalmarketing.io",
-      "eric@rocketdigitalmarketing.io"
+      "admin@your-domain.com",
+      "user@your-domain.com"
     ]
   }'
 ```
@@ -37,14 +37,14 @@ curl -X POST \
   "users": [
     {
       "id": "usr_abc123def456",
-      "name": "Randall Gross",
-      "email": "randall@rocketdigitalmarketing.io",
+      "name": "Jane Admin",
+      "email": "admin@your-domain.com",
       "role": "admin"
     },
     {
       "id": "usr_xyz789ghi012",
-      "name": "Eric Partner",
-      "email": "eric@rocketdigitalmarketing.io",
+      "name": "John User",
+      "email": "user@your-domain.com",
       "role": "admin"
     }
   ],

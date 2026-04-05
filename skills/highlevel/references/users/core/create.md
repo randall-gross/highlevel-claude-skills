@@ -28,9 +28,9 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -H 'Version: 2021-07-28' \
   -d '{
-    "firstName": "Eric",
-    "lastName": "Partner",
-    "email": "eric@rocketdigitalmarketing.io",
+    "firstName": "John",
+    "lastName": "User",
+    "email": "newuser@your-domain.com",
     "phone": "+14155559999",
     "type": "account",
     "role": "admin",
@@ -48,9 +48,9 @@ curl -X POST \
 ```json
 {
   "id": "usr_xyz789ghi012",
-  "firstName": "Eric",
-  "lastName": "Partner",
-  "email": "eric@rocketdigitalmarketing.io",
+  "firstName": "John",
+  "lastName": "User",
+  "email": "newuser@your-domain.com",
   "phone": "+14155559999",
   "type": "account",
   "role": "admin",

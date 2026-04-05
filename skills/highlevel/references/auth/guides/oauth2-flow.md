@@ -2,15 +2,17 @@
 
 > **This is a guide, not an API endpoint.**
 
-The full OAuth 2.0 authorization code flow for HighLevel marketplace apps. This is how third-party apps (including the Rocket Digital Client Connector) authenticate with client locations.
+The full OAuth 2.0 authorization code flow for HighLevel marketplace apps. This is how third-party apps authenticate with client locations.
 
-## Rocket Digital Client Connector
+## Your App Credentials
+
+Replace these placeholders with your own values from the HL Marketplace:
 
 | Property | Value |
 |----------|-------|
-| App ID | `69a4dc27c86f2926349dac9d` |
-| Client ID | `69a4dc27c86f2926349dac9d-mm8gqa32` |
-| Callback URL | `https://api.rocketdigitalmarketing.io/oauth/callback` |
+| App ID | `your-app-id` |
+| Client ID | `your-client-id` |
+| Callback URL | `https://your-domain.com/oauth/callback` |
 
 ## The Flow
 
@@ -19,7 +21,7 @@ The full OAuth 2.0 authorization code flow for HighLevel marketplace apps. This 
 Redirect the user to HighLevel's authorization page:
 
 ```
-https://marketplace.gohighlevel.com/oauth/chooselocation?response_type=code&redirect_uri=https://api.rocketdigitalmarketing.io/oauth/callback&client_id=69a4dc27c86f2926349dac9d-mm8gqa32&scope=contacts.readonly contacts.write calendars.readonly opportunities.readonly opportunities.write
+https://marketplace.gohighlevel.com/oauth/chooselocation?response_type=code&redirect_uri=https://your-domain.com/oauth/callback&client_id=your-client-id&scope=contacts.readonly contacts.write calendars.readonly opportunities.readonly opportunities.write
 ```
 
 **Parameters:**
@@ -35,7 +37,7 @@ https://marketplace.gohighlevel.com/oauth/chooselocation?response_type=code&redi
 The user selects which location(s) to install the app in and clicks "Authorize". HighLevel redirects to your callback URL with a `code` parameter:
 
 ```
-https://api.rocketdigitalmarketing.io/oauth/callback?code=AUTH_CODE_HERE
+https://your-domain.com/oauth/callback?code=AUTH_CODE_HERE
 ```
 
 ### Step 3: Exchange Code for Tokens
@@ -46,11 +48,11 @@ const response = await fetch('https://services.leadconnectorhq.com/oauth/token',
   method: 'POST',
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   body: new URLSearchParams({
-    client_id: '69a4dc27c86f2926349dac9d-mm8gqa32',
+    client_id: process.env.GHL_CLIENT_ID!,
     client_secret: process.env.GHL_CLIENT_SECRET!,
     grant_type: 'authorization_code',
     code: authCode,
-    redirect_uri: 'https://api.rocketdigitalmarketing.io/oauth/callback',
+    redirect_uri: process.env.GHL_REDIRECT_URI!,
     user_type: 'Location',
   }),
 });
@@ -89,7 +91,7 @@ async function getValidToken(locationId: string) {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
-        client_id: '69a4dc27c86f2926349dac9d-mm8gqa32',
+        client_id: process.env.GHL_CLIENT_ID!,
         client_secret: process.env.GHL_CLIENT_SECRET!,
         grant_type: 'refresh_token',
         refresh_token: stored.refreshToken,
@@ -126,8 +128,8 @@ const locationToken = await fetch('https://services.leadconnectorhq.com/oauth/lo
     'Version': '2021-07-28',
   },
   body: JSON.stringify({
-    companyId: 'comp_abc123',
-    locationId: 've9EPM428h8vShlRW1KT',
+    companyId: 'your-company-id',
+    locationId: 'target-location-id',
   }),
 });
 ```

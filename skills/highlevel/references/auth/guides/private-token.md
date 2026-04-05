@@ -13,7 +13,7 @@ A Private Integration Token is a long-lived API key scoped to a single HighLevel
 1. Log in to HighLevel
 2. Navigate to **Settings > Integrations > Private Integrations**
 3. Click **Create Private Integration**
-4. Name it descriptively (e.g., "Rocket Website API", "Claude MCP Server")
+4. Name it descriptively (e.g., "Website API", "Claude MCP Server")
 5. Select the **scopes** your integration needs (contacts.readonly, contacts.write, etc.)
 6. Click **Create** and copy the token immediately — it won't be shown again
 

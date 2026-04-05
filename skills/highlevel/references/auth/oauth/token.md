@@ -25,7 +25,7 @@
 curl -X POST \
   'https://services.leadconnectorhq.com/oauth/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id=69a4dc27c86f2926349dac9d-mm8gqa32&client_secret=YOUR_SECRET&grant_type=authorization_code&code=AUTH_CODE_FROM_CALLBACK&redirect_uri=https://api.rocketdigitalmarketing.io/oauth/callback&user_type=Location'
+  -d 'client_id=your-client-id&client_secret=YOUR_SECRET&grant_type=authorization_code&code=AUTH_CODE_FROM_CALLBACK&redirect_uri=https://your-domain.com/oauth/callback&user_type=Location'
 ```
 
 ### Refresh Token
@@ -33,7 +33,7 @@ curl -X POST \
 curl -X POST \
   'https://services.leadconnectorhq.com/oauth/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id=69a4dc27c86f2926349dac9d-mm8gqa32&client_secret=YOUR_SECRET&grant_type=refresh_token&refresh_token=STORED_REFRESH_TOKEN&user_type=Location'
+  -d 'client_id=your-client-id&client_secret=YOUR_SECRET&grant_type=refresh_token&refresh_token=STORED_REFRESH_TOKEN&user_type=Location'
 ```
 
 ## Response Example

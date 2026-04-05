@@ -1,6 +1,6 @@
 # Claude Code Plugins Guide
 
-Step-by-step installation guide for recommended Claude Code plugins used at Rocket Digital Marketing.
+Step-by-step installation guide for recommended Claude Code plugins.
 
 ---
 

@@ -1,13 +1,33 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/HighLevel_API-V2-blue?style=for-the-badge" alt="HighLevel API V2" />
-  <img src="https://img.shields.io/badge/Endpoints-413-green?style=for-the-badge" alt="413 Endpoints" />
-  <img src="https://img.shields.io/badge/Domains-36-orange?style=for-the-badge" alt="36 Domains" />
-  <img src="https://img.shields.io/badge/Claude_Code-Skills-purple?style=for-the-badge" alt="Claude Code Skills" />
+  <img src="https://img.shields.io/badge/HighLevel_API-V2-0066FF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyTDIgMTJoM3Y4aDZ2LTZoMnY2aDZWMTJoM0wxMiAyeiIvPjwvc3ZnPg==" alt="HighLevel API V2" />
+  <img src="https://img.shields.io/badge/Endpoints-413-00C853?style=for-the-badge" alt="413 Endpoints" />
+  <img src="https://img.shields.io/badge/Domains-36-FF6D00?style=for-the-badge" alt="36 Domains" />
+  <img src="https://img.shields.io/badge/Claude_Code-Skills-7C3AED?style=for-the-badge" alt="Claude Code Skills" />
 </p>
 
-# Rocket Claude Kit
+<h1 align="center">HighLevel Claude Skills</h1>
 
-The complete HighLevel API reference system for Claude Code, built for the **Rocket Digital Marketing** team. Skills, hooks, and environment configuration — one repo, one setup command, fully operational.
+<p align="center">
+  <strong>The complete HighLevel API V2 reference system for Claude Code.</strong><br/>
+  413 endpoints. 36 domains. One setup command.
+</p>
+
+<p align="center">
+  <a href="#quick-start">Quick Start</a> &bull;
+  <a href="#how-it-works">How It Works</a> &bull;
+  <a href="#whats-included">What's Included</a> &bull;
+  <a href="#tier-comparison">Tiers</a> &bull;
+  <a href="#marketplace-app-setup">Marketplace Setup</a> &bull;
+  <a href="#for-developers">For Developers</a>
+</p>
+
+---
+
+## The Problem
+
+You're building on the HighLevel API. You're using Claude Code. Every time you need to hit an endpoint, Claude either hallucinates the request format, uses outdated V1 patterns, or makes you look it up yourself.
+
+**This repo fixes that.** Claude gets a structured reference for every HL endpoint — method, path, parameters, request/response examples, gotchas — loaded on demand through a 4-level cascading skill system.
 
 ---
 
@@ -15,58 +35,158 @@ The complete HighLevel API reference system for Claude Code, built for the **Roc
 
 ```bash
 # 1. Clone
-git clone https://github.com/randall-gross/rocket-claude-kit.git
-cd rocket-claude-kit
+git clone https://github.com/randall-gross/highlevel-claude-skills.git
+cd highlevel-claude-skills
 
 # 2. Install
 chmod +x setup.sh
 ./setup.sh
 
-# 3. Merge settings
+# 3. Merge settings (optional — adds safe defaults)
 jq -s '.[0] * .[1]' ~/.claude/settings.json environment/settings-template.json > tmp.json \
   && mv tmp.json ~/.claude/settings.json
-
-# 4. Install plugins (see environment/plugins-guide.md)
 ```
 
-That's it. Claude Code now has access to every HighLevel API endpoint.
+That's it. Claude Code now knows every HighLevel API endpoint.
 
 ---
 
-## What's Inside
+## How It Works
 
-### The HighLevel Skill System
-
-A **4-level cascading reference** covering the entire HL API V2. Claude reads only what it needs — never loading 400+ endpoints into context.
+The skill system uses a **4-level cascade** so Claude loads only what it needs — never dumping 400+ endpoints into context.
 
 ```
-Level 1   SKILL.md                          Master router — reads task, picks domain
+Level 1   SKILL.md                              Reads the task, picks the domain
   |
-Level 2   references/{domain}/README.md     Domain overview — scopes, patterns, subdomain routing
+Level 2   references/{domain}/README.md         Domain overview — scopes, patterns, routing
   |
-Level 3   references/{domain}/{sub}/README  Subdomain index — lists every endpoint file
+Level 3   references/{domain}/{sub}/README.md   Subdomain index — lists every endpoint
   |
-Level 4   references/{domain}/{sub}/{ep}.md Single endpoint — method, path, params, examples
+Level 4   references/{domain}/{sub}/{ep}.md     Single endpoint — method, params, examples
 ```
 
-**How it works at runtime:**
+**Example runtime flow:**
 
 ```
-User: "Upsert a contact with this email"
+You: "Upsert a contact with this email and add the 'website-lead' tag"
 
 Claude reads SKILL.md        -> routes to contacts/
 Claude reads contacts/README -> routes to contacts/core/
 Claude reads core/README     -> finds upsert.md
-Claude reads upsert.md       -> has method, path, params, example -> executes
+Claude reads upsert.md       -> has the method, path, params, JSON example
+                              -> knows tags are ADDITIVE on upsert (gotcha documented)
+                              -> executes correctly on the first try
 ```
 
-4 file reads to reach any of 413 endpoints.
+**4 file reads** to reach any of 413 endpoints. No hallucination. No guessing.
+
+---
+
+## What's Included
+
+### Tier Comparison
+
+<table>
+<tr>
+<th width="33%">
+
+### Community
+**Free**
+
+</th>
+<th width="33%">
+
+### Professional
+**$15/mo**
+
+</th>
+<th width="33%">
+
+### Enterprise
+**$40/mo**
+
+</th>
+</tr>
+<tr>
+<td>
+
+**Core CRM — 105 endpoints**
+- Contacts (32)
+- Opportunities (10)
+- Calendars (34)
+- Conversations (19)
+- Workflows (1)
+- Custom Objects (9)
+
+**Plus:**
+- Master SKILL.md router
+- Setup script
+- Basic README guides
+
+</td>
+<td>
+
+**Everything in Community, plus:**
+
+**Extended Platform — 165 endpoints**
+- Locations (29)
+- Invoices & Estimates (41)
+- Payments (24)
+- Products (27)
+- Users (7)
+- Auth & OAuth (5)
+- Associations (10)
+- Custom Fields V2 (8)
+- Businesses (5)
+- Forms (3)
+- Surveys (2)
+- Links (6)
+- Webhooks (2)
+
+**Plus:**
+- Protective hooks (6 scripts)
+- Settings template
+- Plugin installation guide
+
+</td>
+<td>
+
+**Everything in Professional, plus:**
+
+**Specialized Domains — 143 endpoints**
+- Social Planner (40)
+- Store & Shipping (18)
+- SaaS API (22)
+- Voice AI (11)
+- Blogs (7)
+- Funnels (7)
+- Email Builder (5)
+- Media Library (7)
+- Snapshots (4)
+- Marketplace (7)
+- Proposals (4)
+- Custom Menus (5)
+- Phone System (2)
+- Courses (1)
+- Campaigns (1)
+- Companies (1)
+- Email ISV (1)
+
+**Plus:**
+- Marketplace App setup guide
+- Next.js integration patterns
+- Webhook handler templates
+- Priority updates for new API versions
+
+</td>
+</tr>
+</table>
 
 ---
 
 ### Domain Map
 
-#### Tier 1 — Core CRM (Full Documentation)
+#### Core CRM (Community Tier)
 
 | Domain | Endpoints | What It Does |
 |--------|:---------:|-------------|
@@ -74,10 +194,10 @@ Claude reads upsert.md       -> has method, path, params, example -> executes
 | **Opportunities** | 10 | Pipeline deals, stages, status tracking, followers |
 | **Calendars** | 34 | Scheduling, appointments, free slots, groups, resources, notifications |
 | **Conversations** | 19 | SMS, email, live chat, recordings, transcriptions |
-| **Workflows** | 1 | List workflows (add/remove contacts is under Contacts) |
-| **Custom Objects** | 9 | Schema CRUD, record CRUD, search — powers the PM system |
+| **Workflows** | 1 | List workflows (add/remove contacts lives under Contacts) |
+| **Custom Objects** | 9 | Schema CRUD, record CRUD, search |
 
-#### Tier 2 — Extended Platform (Full Documentation)
+#### Extended Platform (Professional Tier)
 
 | Domain | Endpoints | What It Does |
 |--------|:---------:|-------------|
@@ -95,7 +215,7 @@ Claude reads upsert.md       -> has method, path, params, example -> executes
 | **Links** | 6 | Trigger link CRUD and search |
 | **Webhooks** | 2 | Signature verification guide + event types reference |
 
-#### Tier 3 — Specialized (Stub Documentation)
+#### Specialized (Enterprise Tier)
 
 | Domain | Endpoints | Domain | Endpoints |
 |--------|:---------:|--------|:---------:|
@@ -109,13 +229,11 @@ Claude reads upsert.md       -> has method, path, params, example -> executes
 | Media | 7 | Companies | 1 |
 | | | Email ISV | 1 |
 
-> Tier 3 domains have endpoint stubs with method/path/scopes. Full request/response documentation is planned.
-
 ---
 
-### Protective Hooks
+### Protective Hooks (Professional+)
 
-Six guardrails designed for **non-developer team members** — preventing destructive mistakes without blocking productive work.
+Six guardrails designed for team environments — preventing destructive mistakes without blocking productive work.
 
 | Hook | Trigger | What It Does |
 |------|---------|-------------|
@@ -128,22 +246,140 @@ Six guardrails designed for **non-developer team members** — preventing destru
 
 ---
 
-### Environment Config
+## Marketplace App Setup
 
-| File | Purpose |
-|------|---------|
-| `settings-template.json` | Safe permission defaults — allows reads/git/npm, blocks destructive ops and secret files |
-| `plugins-guide.md` | Step-by-step install for Composure, Design Forge, Context7, Firecrawl, Playwright |
+Want to build your own HighLevel Marketplace app? Here's the complete walkthrough.
+
+### Prerequisites
+
+- A HighLevel agency account
+- A domain with HTTPS (no `localhost` — HL rejects it)
+- A server to host your OAuth callback (Next.js, Express, etc.)
+
+### Step 1: Create Your App
+
+1. Go to **marketplace.gohighlevel.com** → **My Apps** → **Create App**
+2. Fill in:
+   - **App Name:** Your integration name
+   - **Description:** What your app does
+   - **App Type:** Choose "Sub-Account" for location-level or "Agency" for company-level
+   - **Webhook URL:** `https://your-domain.com/webhooks/highlevel` (optional)
+3. Under **OAuth Settings:**
+   - **Redirect URI:** `https://your-domain.com/oauth/callback`
+   - **Never** include "highlevel" or "gohighlevel" in this URL (white-label policy)
+4. Save. You'll receive:
+   - **App ID** — identifies your app
+   - **Client ID** — used in OAuth flow
+   - **Client Secret** — store this securely, never commit to code
+
+### Step 2: Configure Scopes
+
+Select only the scopes your app needs. The full list is in `skills/highlevel/SKILL.md`.
+
+Common scope sets:
+
+**CRM Integration (read/write contacts + opportunities):**
+```
+contacts.readonly contacts.write
+opportunities.readonly opportunities.write
+calendars.readonly calendars/events.readonly
+```
+
+**Marketing Automation (forms, conversations, workflows):**
+```
+contacts.readonly contacts.write
+conversations.readonly conversations.write
+conversations/message.readonly conversations/message.write
+forms.readonly
+workflows.readonly
+```
+
+**Full Platform Access (everything):**
+See the 149-scope list in the auth guides at `skills/highlevel/references/auth/`.
+
+### Step 3: Implement OAuth
+
+The complete OAuth flow with code examples is documented in:
+
+```
+skills/highlevel/references/auth/guides/oauth2-flow.md
+```
+
+**Quick summary:**
+1. Redirect user to HL authorization page
+2. User selects location(s) and authorizes
+3. HL redirects to your callback with auth code
+4. Exchange code for access + refresh tokens
+5. Store tokens per location
+6. Refresh proactively before 24h expiry
+
+### Step 4: Make API Calls
+
+Once you have a valid token, every endpoint in this repo tells you exactly what to send:
+
+```typescript
+const response = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json',
+    'Version': '2021-07-28',  // REQUIRED — fails silently without it
+  },
+  body: JSON.stringify({
+    locationId: 'location-id-here',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john@example.com',
+    tags: ['website-lead'],
+    source: 'API',
+  }),
+});
+```
+
+### Step 5: Submit for Review
+
+Before your app goes live on the Marketplace:
+
+1. **Test thoroughly** with at least 2 sub-account locations
+2. Complete your app profile (logo, screenshots, description)
+3. Add a **privacy policy URL** and **terms of service URL**
+4. Submit for review — HL team typically responds within 5-7 business days
+
+### Common Pitfalls
+
+| Pitfall | Solution |
+|---------|----------|
+| "Invalid redirect URI" | Must match exactly, including trailing slashes. No localhost. |
+| Requests return empty/error | Missing `Version: 2021-07-28` header |
+| "Invalid token" after 24h | Implement proactive refresh (see auth guides) |
+| Lost refresh token | User must uninstall and reinstall your app |
+| Rate limited | 100 req/10s per location. Implement backoff. |
+| Scopes changed | Users must uninstall/reinstall. Plan scopes carefully upfront. |
+
+---
+
+## Need Help Building Your App?
+
+We build HighLevel integrations and marketplace apps for agencies.
+
+**What we offer:**
+- Custom HL Marketplace app development
+- OAuth setup and token management
+- Webhook handler implementation
+- Next.js + HL integration patterns
+- Ongoing API maintenance as HL releases updates
+
+**Get in touch:** [rocketdigitalmarketing.io](https://rocketdigitalmarketing.io)
 
 ---
 
 ## Repo Structure
 
 ```
-rocket-claude-kit/
+highlevel-claude-skills/
 |
 +-- skills/highlevel/
-|   +-- SKILL.md                    <- Master router
+|   +-- SKILL.md                    <- Master router (Level 1)
 |   +-- references/
 |       +-- contacts/               <- 32 endpoints, 10 subdomains
 |       +-- opportunities/          <- 10 endpoints, 3 subdomains
@@ -164,7 +400,7 @@ rocket-claude-kit/
 |       +-- surveys/                <- 2 endpoints
 |       +-- links/                  <- 6 endpoints
 |       +-- webhooks/               <- 2 reference files
-|       +-- [17 Tier 3 domains]     <- Stub documentation
+|       +-- [17 specialized domains]
 |
 +-- environment/
 |   +-- hooks/                      <- 6 protective shell scripts
@@ -177,21 +413,9 @@ rocket-claude-kit/
 
 ---
 
-## Updating
-
-```bash
-cd rocket-claude-kit
-git pull
-./setup.sh
-```
-
-The setup script is idempotent — safe to run as many times as you want.
-
----
-
 ## How Endpoint Files Are Structured
 
-Every fully-documented endpoint follows this format:
+Every fully-documented endpoint follows this consistent format:
 
 ```markdown
 # Endpoint Name
@@ -202,7 +426,7 @@ Every fully-documented endpoint follows this format:
 - **Rate Limit:** Standard (100/10s)
 
 ## Parameters
-[Path, query, and body parameter tables]
+[Path, query, and body parameter tables with types and required flags]
 
 ## Request Example
 [Curl command or JSON body with realistic data]
@@ -211,14 +435,26 @@ Every fully-documented endpoint follows this format:
 [JSON response with realistic data]
 
 ## Error Responses
-[Status codes and what they mean]
+[Status codes with specific meanings]
 
 ## Common Use Cases
-[When you'd use this endpoint]
+[When and why you'd use this endpoint]
 
 ## Gotchas
-[Non-obvious behavior or common mistakes]
+[Non-obvious behavior, common mistakes, HL quirks]
 ```
+
+---
+
+## Updating
+
+```bash
+cd highlevel-claude-skills
+git pull
+./setup.sh
+```
+
+The setup script is idempotent — safe to run as many times as you want.
 
 ---
 
@@ -235,7 +471,11 @@ Every fully-documented endpoint follows this format:
 
 1. Create the script in `environment/hooks/`
 2. Follow the existing pattern: `#!/bin/bash`, comment header, `$TOOL_INPUT`, exit 0/2
-3. Document the hook in this README
+3. Document the matcher and trigger in the hooks table above
+
+### Contributing
+
+Found an endpoint that's wrong, missing, or outdated? PRs welcome. Please follow the existing file format and include realistic request/response examples.
 
 ---
 
@@ -243,4 +483,10 @@ Every fully-documented endpoint follows this format:
 
 Built by **Randall Gross** at [Rocket Digital Marketing](https://rocketdigitalmarketing.io) with Claude Code.
 
-API reference data sourced from the [official HighLevel API docs](https://highlevel.stoplight.io/docs/integrations/) and [GoHighLevel/highlevel-api-docs](https://github.com/GoHighLevel/highlevel-api-docs).
+API reference data sourced from the [official HighLevel API docs](https://highlevel.stoplight.io/docs/integrations/) and the [GoHighLevel OpenAPI specs](https://github.com/GoHighLevel/highlevel-api-docs).
+
+---
+
+<p align="center">
+  <sub>Made for the HighLevel community. Built with Claude Code.</sub>
+</p>

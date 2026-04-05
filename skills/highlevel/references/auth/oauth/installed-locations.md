@@ -20,7 +20,7 @@
 
 ```bash
 curl -X GET \
-  'https://services.leadconnectorhq.com/oauth/installedLocations?appId=69a4dc27c86f2926349dac9d&companyId=comp_abc123&isInstalled=true&limit=50' \
+  'https://services.leadconnectorhq.com/oauth/installedLocations?appId=your-app-id&companyId=comp_abc123&isInstalled=true&limit=50' \
   -H 'Authorization: Bearer AGENCY_ACCESS_TOKEN' \
   -H 'Version: 2021-07-28'
 ```
@@ -32,13 +32,13 @@ curl -X GET \
   "locations": [
     {
       "locationId": "ve9EPM428h8vShlRW1KT",
-      "name": "AllStar Shower Doors",
+      "name": "Example Business A",
       "isInstalled": true,
       "installedAt": "2024-06-15T14:30:00.000Z"
     },
     {
       "locationId": "pQr3sTuVwXyZ1234abcd",
-      "name": "Pool Bros Marketing",
+      "name": "Example Business B",
       "isInstalled": true,
       "installedAt": "2024-07-01T09:00:00.000Z"
     }

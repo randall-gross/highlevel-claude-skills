@@ -18,7 +18,7 @@
 
 ```bash
 curl -X GET \
-  'https://services.leadconnectorhq.com/users/search?locationId=ve9EPM428h8vShlRW1KT&query=randall' \
+  'https://services.leadconnectorhq.com/users/search?locationId=ve9EPM428h8vShlRW1KT&query=jane' \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Version: 2021-07-28'
 ```
@@ -30,10 +30,10 @@ curl -X GET \
   "users": [
     {
       "id": "usr_abc123def456",
-      "name": "Randall Gross",
-      "firstName": "Randall",
-      "lastName": "Gross",
-      "email": "randall@rocketdigitalmarketing.io",
+      "name": "Jane Admin",
+      "firstName": "Jane",
+      "lastName": "Admin",
+      "email": "admin@your-domain.com",
       "role": "admin"
     }
   ],

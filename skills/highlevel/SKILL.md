@@ -90,9 +90,12 @@ When you need to work with a HighLevel API domain, read the domain README first.
 6. **Rate limits are per-app per-location**, not cumulative across all installs.
 7. **Webhook retries:** Only 429s are retried (6 attempts, ~70 min). 5xx errors are NOT retried.
 
-## Rocket Digital Specifics
+## Your App Details
 
-- **Client Connector App ID:** `69a4dc27c86f2926349dac9d`
-- **Client Connector Client ID:** `69a4dc27c86f2926349dac9d-mm8gqa32`
-- **Callback URL:** `https://api.rocketdigitalmarketing.io/oauth/callback`
-- **PM System Location:** `YEVDcWEDf2UqQ7ZSVPey` (uses Custom Objects for Project > Epoch > Task > Subtask)
+Replace these with your own Marketplace App credentials:
+
+- **App ID:** `your-app-id`
+- **Client ID:** `your-client-id`
+- **Callback URL:** `https://your-domain.com/oauth/callback`
+
+See `references/auth/guides/oauth2-flow.md` for the full OAuth setup walkthrough, or read the **Marketplace App Setup Guide** in the repo root.

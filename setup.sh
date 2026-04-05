@@ -1,5 +1,5 @@
 #!/bin/bash
-# Rocket Claude Kit — Setup Script
+# HighLevel Claude Skills — Setup Script
 # Symlinks skills and copies hooks into ~/.claude/
 
 set -euo pipefail
@@ -7,7 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
-echo "=== Rocket Claude Kit Setup ==="
+echo "=== HighLevel Claude Skills Setup ==="
 
 # 1. Symlink skills
 echo "Linking skills..."

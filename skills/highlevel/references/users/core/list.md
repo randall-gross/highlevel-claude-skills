@@ -31,10 +31,10 @@ curl -X GET \
   "users": [
     {
       "id": "usr_abc123def456",
-      "name": "Randall Gross",
-      "firstName": "Randall",
-      "lastName": "Gross",
-      "email": "randall@rocketdigitalmarketing.io",
+      "name": "Jane Admin",
+      "firstName": "Jane",
+      "lastName": "Admin",
+      "email": "admin@your-domain.com",
       "phone": "+14155551234",
       "type": "account",
       "role": "admin",

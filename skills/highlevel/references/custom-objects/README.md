@@ -15,12 +15,12 @@ Custom Objects allow creating custom data models within a HighLevel sub-account.
 - **Field references** in filters use dot notation: `custom_objects.task.status`, `custom_objects.task.assignee`
 - **Records** store data as key-value `properties` matching the schema's field definitions
 
-## Rocket Digital PM System
+## Example Use Case: Project Management
 
-The project management system at location `YEVDcWEDf2UqQ7ZSVPey` uses custom objects for:
+Custom Objects can power a full project management system:
 - **Project** → **Epoch** → **Task** → **Subtask** hierarchy
-- Tasks have fields like `title`, `status`, `assignee`, `files_affected`, `acceptance_criteria`
-- Queried by Claude agents at session start to load assigned work
+- Tasks with fields like `title`, `status`, `assignee`, `files_affected`, `acceptance_criteria`
+- Queryable via the search endpoint with filters on any field
 
 ## Subdomain Routing
 
