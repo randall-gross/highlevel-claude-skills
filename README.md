@@ -47,7 +47,10 @@ jq -s '.[0] * .[1]' ~/.claude/settings.json environment/settings-template.json >
   && mv tmp.json ~/.claude/settings.json
 ```
 
-That's it. Claude Code now knows every HighLevel API endpoint.
+Claude Code now has the full HL API reference system. **But you still need HighLevel credentials before Claude can make actual API calls.** You have two options:
+
+- **Private Integration Token** — simplest setup, works in 5 minutes. See [the setup guide](https://www.hlarchitect.ai/docs/setup).
+- **OAuth 2.0 Marketplace App** — for multi-account access. Requires creating a private app in the HL Marketplace. See [the full walkthrough](https://www.hlarchitect.ai/docs/setup).
 
 ---
 
