@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 SKILL_DIR="$CLAUDE_DIR/skills/highlevel"
 LICENSE_FILE="$SKILL_DIR/.license"
-API_URL="https://rdm-api.vercel.app/api/license"
+API_URL="https://api.rocketdigitalmarketing.io/api/license"
 
 # ─── Dependency Check ─────────────────────────────────────────────────────────
 
